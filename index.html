@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Questionnaire</title>
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
+  <style>
+    #nextScreen {
+      font-family: Arial, sans-serif;
+      font-size: 19px;
+      color: #333;
+    }
+  </style>
+  <style>
+    #introScreen {
+      font-family: Arial, sans-serif;
+      font-size: 19px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+<div id="introScreen">
+  <h2>Welcome to the dumbest and also one of the proudest projects ever been made by me instead of saying sorry like a normal human being(please do not take this too serious from your professional view because you-know-why)!</h2>
+  <p>Hi, my name is BOTSON, and unlike my boss, I can only tell the truth :). First of all, he is very sorry about what he said, even more when he realized how much it upsetted you - his very good friend. This project is made just from one of his crazy ideas as a form of an apology. The guy has very little to no coding experience before doing this if it means anything about his sincerity.</p>
+
+  <p>But seriously, my boss told me to say that anything you just read and are about to see is 100% the truth, so do not think too hard about it, just take things at face value. Anyway, it is probably the easiest format you have ever seen, but it literally killed my boss mentally and physically to do this, so...</p>
+  
+  <p>Here are the RULES. You will see 3 sets of questions or statements about the boss personally, each set have 3 things you can know the answer. But you can only choose to know 1 answer only from each set. All the answers will be reavealed at the end, and things will get more personal the more you go(:p). So choose 3 out of 9 things you want to know. He made this in English on purpose(khổ không b ưi :v) so feel free to take screenshots for later if you need clear translation because Google Translate is not good (trust me, I tried). </p>
+
+  <p>IMPORTANT, in any situation DO NOT RELOAD the page or the link after START because it will most likely crash and ruin this experience. Also, going back is NOT an option, so think carefully, my friend. That is all, GLHF.</p>
+
+  <button onclick="startQuestionnaire()">Start</button>
+</div>
+
+
+<div id="questionSet1" class="hidden">
+  <h3>Question 1:</h3>
+  <p>If I can only choose ONE friend (that you and I both know) to keep staying friends who would that be?</p>
+  <button onclick="selectAnswer(1)">Select Answer</button>
+  <p id="answer1" class="hidden"></p>
+  <h3>Question 2:</h3>
+  <p>No matter what I will never date a girl that...?</p>
+  <button onclick="selectAnswer(2)">Select Answer</button>
+  <p id="answer2" class="hidden"></p>
+  <h3>Question 3:</h3>
+  <p>What do I work for?</p>
+  <button onclick="selectAnswer(3)">Select Answer</button>
+  <p id="answer3" class="hidden"></p>
+</div>
+
+<div id="questionSet2" class="hidden">
+  <h3>Question 4:</h3>
+  <p>What are my other top choices to say sorry to you instead of doing this one hell of a project?</p>
+  <button onclick="selectAnswer(4)">Select Answer</button>
+  <p id="answer4" class="hidden"></p>
+  <h3>Question 5:</h3>
+  <p>It is clear that I don't have much experience about relationships, but there is one thing i truly believe in myself when it comes to love, that is...?</p>
+  <button onclick="selectAnswer(5)">Select Answer</button>
+  <p id="answer5" class="hidden"></p>
+  <h3>Question 6:</h3>
+  <p>My serious biggest fear?</p>
+  <button onclick="selectAnswer(6)">Select Answer</button>
+  <p id="answer6" class="hidden"></p>
+</div>
+
+<div id="questionSet3" class="hidden">
+  <h3>Question 7:</h3>
+  <p>What is something I REALLY want but know that I can NEVER do/achieve it?</p>
+  <button onclick="selectAnswer(7)">Select Answer</button>
+  <p id="answer7" class="hidden"></p>
+  <h3>Question 8:</h3>
+  <p>This might be inappropiate but interesting enough: Have I lost my virginity? When if yes?</p>
+  <button onclick="selectAnswer(8)">Select Answer</button>
+  <p id="answer8" class="hidden"></p>
+  <h3>Question 9:</h3>
+  <p>What should you least expect from me or from the way I live my life?</p>
+  <button onclick="selectAnswer(9)">Select Answer</button>
+  <p id="answer9" class="hidden"></p>
+</div>
+
+<div id="result" class="hidden">
+  <h2>BOTSON here again. Excellent choices of questions you did there ^^. Well, here are your answers, again, they are solid so pay attention okay. Take a screenshot if you want because you might want to see the FINAL QUESTION in the next page.</h2>
+  <p>First answer:</p>
+  <p id="set1Answer1"></p>
+  <p id="set1Answer2"></p>
+  <p id="set1Answer3"></p>
+  <p>Second answer :</p>
+  <p id="set2Answer1"></p>
+  <p id="set2Answer2"></p>
+  <p id="set2Answer3"></p>
+  <p>Third answer:</p>
+  <p id="set3Answer1"></p>
+  <p id="set3Answer2"></p>
+  <p id="set3Answer3"></p>
+  <button onclick="nextScreen()">Next</button>
+</div>
+
+<div id="nextScreen" class="hidden">
+  <h2>There you have it! I hope you are satisfied with this experience. Thank you for taking your time to get to this point; it means a lot to my boss. Once again, he just want you to know that he is very sorry for his insensitive actions(and even more recently too ;-;), and there's no excuse. He really meant it, probably just too dumb to express it -_-. It was only for a short time, but it was my pleasure, and I hope to see you again in another project (who knows, the boss has the final say in this anyway).</h2>
+
+  <p>Yeah, and I did not forget. The last question you can ask is... Well, you will have to ask the boss directly. The question is up to you, and he will answer ANYTHING with complete honesty. It is easy to know if he will be lying or not because it will HAVE to be a YES/NO question only (so only a 50% chance he's lying if my math is correct), please wisely choose what you want to know or show mercy and ask dumb shit like "Are you normal ?". Take a screenshot if you want to make sure he will oblige, although the boss would never go back on his word. That is it! #BOTSONOUT.</p>
+</div>
+
+<script>
+  let selectedAnswers = {
+    set1: [],
+    set2: [],
+    set3: []
+  };
+  let currentQuestionSet = 1;
+
+  const answers = {
+    set1: {
+      answer1: "Xeduijbo, jxyi yi jxu xqhtuij gkuijyed je qdimuh. Rkj yv Y xqlu je sxeeiu edu jxud jxqj yi co weet vhyudt Jhkdw Lk. Oek cywxj dej byau jxu qdimuh(beb), rkj rusqkiu xu yi co luho vyhij vhyudt tkhydw jxqj jycu qdt ulud kdjyb husudjbo xu ijybb ixemi xem cksx xu huqbbo yi co vhyudt. Qsjkqbbo, Y qc dej ikffeiu je qdimuh jxyi edu rusqkiu oek wkoi qhu qbb co huqbbo fhusyeki vhyudti, rkj xu yi jxu qdimuh rusqkiu ev iudjycudjqb huqiedi. ",
+      answer2: " Y mybb duluh tqju qd ebtuh wyhb. Veh iycfbu huqied, zkij rusqkiu Y vuub jxqj qd ebtuh wyhbvhyudt yi eluhhqjut. Qdt veh cehu secfbysqjut huqied, Y mekbt byau je ifeyb co wyhbvhyudt qdt yj yi xqht je ifeyb qd ebtuh wyhb Y wkuii ie... ",
+      answer3: "Vhuutec. Cehu ifusyvysqbbo, Y mqdj je ru vhuu je te mxqjuluh Y mqdj, qdt myjx udekwx xqht-meha qdt tutysqjyed cqoru edu tqo Y sqd thef yj qbb qdt huqbbo ijqhj udzeoydw byvu. Veh unqcfbu, yv Y sqd wuj je q feydj mxuhu Y sqd ijef mehaydw ydtuvydyjubo qdt we ed lqsqjyedi myjx de mehhyui jxud jxqj ixekbt ru udekwx."
+    },
+    set2: {
+      answer4: "Oek mybb fherqrbo adem jxyi ieeduh eh bqjuh ie Y ted'j adem mxo oek qhu xuhu, rkj jxuiu qhu jxu ejxuh jef 2 sxeysui. Vyhij mekbt ru je iudt oek q fbkixyu eh fherqrbo q sqau myjxekj jubbydw oek, qdt jxyi yi qsjkqbbo xqhtuh je te wkuii :l, rkj Y sqd ijybb te yj, jhkij cu. Mubb jxu ejxuh efjyed yi fherqrbo iecu jxydw byau jxyi fhezusj rkj buii tujqybut qdt tuvydyjubo dej setydw hubqjut rusqkiu mxud Y qc mhyjydw jxyi qj jxu cecudj yj ijybb iekdti ie tkct qdt kddusuiiqho =_=. Qdomqo, oek mekbt ijybb xqlu co qfebewo yd edu mqo eh qdejxuh. ",
+      answer5: "Hubqjyedixyf yi dej co jxydw rkj yv Y qc jxu cqd mxe Y jxyda Y qc Y mekbt duluh huiudj mxeuluh Y xqlu sxeiud je belu de cqjjuh jxu ekjsecu. Qdoedu sqd cqau cyijqaui eh xqlu jxuhu emd huqiedi rkj yj yi co emd sxeysu je tusytu yv Y xqju jxu fuhied veh yj qdt yv jxqj mqi iecuedu Y xqlu belut jxud jxu qdimuh yi de. Q redki, Y jhkbo rubyulu yd belu qj vyhij iywxj.",
+      answer6: "Ed q luho iuhyeki deju, dej ademydw mxqj Y huqbbo mqdj yi mxqj isqhui cu. Y hqhubo jho co xqhtuij je qsxyulu iecujxydw qdt jxyi sqkiu cu je dej adem jxu huqb lqbku ev ycfehjqdj jxydwi. Yj xqffudut ruvehu qdt jxyi buj cu je tekrj coiubv qrekj mxqj Y mqdj. Qdt cehueluh, mxud jxu jycu secui Y'c qvhqyt Y sqd dej bylu kf je jxu unfusjqjyedi ev ejxuhi zkij rusqkiu Y qc mhedw."
+    },
+    set3: {
+      answer7: "Iecujycui Y myix Y sqd zkij xqlu de hubqjyedixyfi myjx vqcybyui, vhyudti,... qi yv Y xqlu duluh unyijut. Mxqj mekbt Y te jxud, mxqj sqd Y te myjx co dum byvu yv jxqj xqffudi? Rkj Y adem dedu ev co tusyiyedi vhec jxud ed qhu dej jyut ro ejxuhi ie Y sqd vhuubo te mxqjuluh Y mqdj je te. Yj yi q iubvyix thuqc rkj ulud yv yj yi feiiyrbu Y mekbt ijybb adem jxqj yi zkij cu jhoydw je uisqfu huifediyrybyjyui ie yj mybb qbmqoi ru q (rqt?) isudqhye jxqj mybb duluh xqffud.",
+      answer8: "Y ted'j adem yv oek xqlu xuqht qdojxydw qrekj jxyi jefys rkj jxu qdimuh yi DE. Zkij mqdj je huqvvyhc jxqj ULUHOJXYDW yd jxyi fhezusj yi jxu qriebkju jhkjx. Ixqcu ed oek veh xqlydw sxeeiud jxyi gkuijyed, Y qc tyiiqfeydjut... Iuhyekibo, Y qc fkhu je jxu sehu, rkj jxqj yi q ijeho veh qdejxuh jycu co vhyudt yv oek qhu huqtydw jxyi.",
+      answer9: "Y qc qixqcu je qtcyj jxyi rkj Y qc dej qi kfhywxj qi Y jxekwxj. Yj yi dej qbmqoi gkyt fhe gke je cu, iecujycui Y zkij mqdj je wqyd jxu ceij mxybu evvuhydw jxu buqij. Ulud mehiu, boydw yi qd efjyed yv Y mqdj je jqau qtlqdjqwu ev jxu effeiyju iyju. Je cu byvu iecujycui yi zkij qrekj cqaydw q tuqb qdt Y zkij mqdj jxu ruij ekj ev yj yv feiiyrbu. Jxu mehij fqhj yi jxqj jxyi ixemi xem fujjo Y sqd ru qdt ceij ev jxu jycu Y sqd bylu ed myjx yj qi dejxydw xqt xqffudut​. "
+    }
+  };
+
+
+  function startQuestionnaire() {
+    document.getElementById("introScreen").classList.add("hidden");
+    document.getElementById("questionSet1").classList.remove("hidden");
+  }
+
+  function selectAnswer(questionNumber) {
+    const answerId = "answer" + questionNumber;
+    const currentSet = "set" + currentQuestionSet;
+    selectedAnswers[currentSet].push(answers[currentSet][answerId]);
+    document.getElementById(answerId).style.display = "none";
+    document.getElementById("questionSet" + currentQuestionSet).style.display = "none";
+    if (currentQuestionSet === 3) {
+      displaySelectedAnswers();
+    } else {
+      currentQuestionSet++;
+      document.getElementById("questionSet" + currentQuestionSet).style.display = "block";
+    }
+  }
+
+ function displaySelectedAnswers() {
+  const set1Answers = selectedAnswers.set1;
+  const set2Answers = selectedAnswers.set2;
+  const set3Answers = selectedAnswers.set3;
+
+  // Decrypt answers
+  const decryptedSet1Answers = set1Answers.map(answer => decryptAnswer(answer));
+  const decryptedSet2Answers = set2Answers.map(answer => decryptAnswer(answer));
+  const decryptedSet3Answers = set3Answers.map(answer => decryptAnswer(answer));
+
+  if (decryptedSet1Answers.length > 0) {
+    document.getElementById("set1Answer1").innerText = decryptedSet1Answers[0];
+  }
+
+  if (decryptedSet1Answers.length > 1) {
+    document.getElementById("set1Answer2").innerText = decryptedSet1Answers[1];
+  }
+
+  if (decryptedSet1Answers.length > 2) {
+    document.getElementById("set1Answer3").innerText = decryptedSet1Answers[2];
+  }
+
+  if (decryptedSet2Answers.length > 0) {
+    document.getElementById("set2Answer1").innerText = decryptedSet2Answers[0];
+  }
+
+  if (decryptedSet2Answers.length > 1) {
+    document.getElementById("set2Answer2").innerText = decryptedSet2Answers[1];
+  }
+
+  if (decryptedSet2Answers.length > 2) {
+    document.getElementById("set2Answer3").innerText = decryptedSet2Answers[2];
+  }
+
+  if (decryptedSet3Answers.length > 0) {
+    document.getElementById("set3Answer1").innerText = decryptedSet3Answers[0];
+  }
+
+  if (decryptedSet3Answers.length > 1) {
+    document.getElementById("set3Answer2").innerText = decryptedSet3Answers[1];
+  }
+
+  if (decryptedSet3Answers.length > 2) {
+    document.getElementById("set3Answer3").innerText = decryptedSet3Answers[2];
+  }
+
+  document.getElementById("result").style.display = "block";
+}
+
+  function nextScreen() {
+    document.getElementById("result").style.display = "none";
+    document.getElementById("nextScreen").style.display = "block";
+  }
+function decryptAnswer(answer) {
+  const shift = 16;
+  let decryptedAnswer = "";
+
+  for (let i = 0; i < answer.length; i++) {
+    let charCode = answer.charCodeAt(i);
+
+    if (charCode >= 65 && charCode <= 90) {
+      // Uppercase letters
+      charCode = ((charCode - 65 - shift + 26) % 26) + 65;
+    } else if (charCode >= 97 && charCode <= 122) {
+      // Lowercase letters
+      charCode = ((charCode - 97 - shift + 26) % 26) + 97;
+    }
+
+    decryptedAnswer += String.fromCharCode(charCode);
+  }
+
+  return decryptedAnswer;
+}
+
+  document.addEventListener('contextmenu', function(event) {
+      event.preventDefault();
+    });
+</script>
+
+
+</body>
+</html>
